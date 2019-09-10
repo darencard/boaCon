@@ -5,7 +5,7 @@ File key
 ```
 boaCon.assembly.fasta = scaffold genome assembly fasta
 boaCon.maker_genes_only.gff3 = GFF3 file produced from MAKER annotation with only gene annotations included (no sequences)
-boaCon.repeats.gff3 = GFF3 file produced from MAKER annotation with only repeat annotations included (no sequences)
+boaCon.repeats.out = RepeatMasker .out file
 ```
 
 Commands to prepare assembly
@@ -18,7 +18,10 @@ cat boaCon.assembly.fasta | bioawk -c fastx '{ print $name, length($seq) }' > bo
 Commands to prepare repeat annotation bigBed file.
 
 ```
-
+# RMout_to_bed.pl script from https://github.com/4ureliek/Parsing-RepeatMasker-Outputs/blob/master/RMout_to_bed.pl
+./RMout_to_bed.pl boaCon.repeats.out base0
+cat boaCon.repeats.out | awk -v OFS="\t" -F '[\t|;]' '{ print $1, $2, $3, $14, "500", $NF }' | sort -k1,1 -k2,2n > boaCon.repeats.reformat.bed
+bedToBigBed boaCon.repeats.reformat.bed boaCon.assembly.chrom.sizes boaCon.repeats.reformat.bigBed
 ```
 
 Commands to prepare gene annotation bigBed file for base annotation.
