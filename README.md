@@ -1,37 +1,35 @@
-## Welcome to GitHub Pages
+## Introduction
 
-You can use the [editor on GitHub](https://github.com/darencard/boaCon/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Welcome to the data repository for the *Boa constrictor* genome. See below for descriptions how to retrieve appropriate files in standard formats from public repositories.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Publication
 
-### Markdown
+The raw genomic data and initial genome assembly were published in the following paper. Please cite this publication when using these data.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Bradnam et al.
 
-```markdown
-Syntax highlighted code block
+The raw transcriptomic data used for genome annotation and all genome annotations (i.e., repeats and genes) were published in the following paper. Please cite this publication when using these data.
 
-# Header 1
-## Header 2
-### Header 3
+Card et al.
 
-- Bulleted
-- List
+## Raw Genome Sequencing Data
 
-1. Numbered
-2. List
+The raw genome sequence read data for this genome can be obtained from the NCBI Sequence Read Archive under accession [XXX](FIXME). Please cite Bradnam *et al*. (2013) when using these data.
 
-**Bold** and _Italic_ and `Code` text
+## Raw Transcriptome Sequencing Data
 
-[Link](url) and ![Image](src)
-```
+The raw transcriptome sequence read data used for genome annotation can be obtained from the NCBI Sequence Read Archive under accession [XXX](FIXME). Please cite Card *et al*. (In Review) when using these data.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Genome Assemblies
 
-### Jekyll Themes
+The raw genome assembly (FASTA format) used for annotation purposes can be found at GigaDB under [accession doi 10.6084/m9.figshare.7640456](https://doi.org/10.6084/m9.figshare.7640456). Please cite Bradnam *et al*. (2013) when using these data.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/darencard/boaCon/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+The specific assembly is the snake 7C assembly produced by the SGA team. Here are direct links to the [scaffold assembly]() and [contig assembly]() (Note: Clicking links will download large files!).
 
-### Support or Contact
+Note that other assemblies are also available and were produced as part of the Assemblathon2 project, but the snake 7C-SGA team assembly was rated the best as part of this project and was used for annotation purposes. See Bradnam *et al*. (2013) for more information.
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Genome Annotation
+
+Repeat and gene annotation files for the snake 7C-SGA team genome assembly (GFF and FASTA files), which are described in Card *et al*. (In Review), can be found at Figshare under [accession doi 10.6084/m9.figshare.7640456](https://doi.org/10.6084/m9.figshare.7640456). 
+
+We have also created a [Genome Hub](https://genome.ucsc.edu/goldenpath/help/hgTrackHubHelp.html) that can be accessed through the [UCSC Genome Browser](https://genome.ucsc.edu/cgi-bin/hgHubConnect), followed by clicking on the “My Hubs” tab and then copying the URL [https://de.cyverse.org/anon-files/iplant/home/darencard/solPar1_hub/assembly_hub.hub.txt](https://de.cyverse.org/anon-files/iplant/home/darencard/solPar1_hub/assembly_hub.hub.txt) and clicking “Add Hub”. 
