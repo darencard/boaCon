@@ -10,7 +10,7 @@ Bradnam KR, Fass JN, Alexandrov A, Baranay P, Bechner M, Birol I, Boisvert S, Ch
 
 The raw transcriptomic data used for genome annotation and all genome annotations (i.e., repeats and genes) were published in the following paper. Please cite this publication when using these data.
 
-Card DC; Adams RH; Schield DR; Perry BW; Corbin AB; Pasquesi GIM; Row K; Daza JM, Booth W, Montgomery CE, Boback SM, Castoe TA. In Review. Genomic basis of convergent island phenotypes in boa constrictors.
+Card DC, Adams RH, Schield DR, Perry BW, Corbin AB, Pasquesi GIM, Row K, Daza JM, Booth W, Montgomery CE, Boback SM, Castoe TA. In Review. Genomic basis of convergent island phenotypes in boa constrictors.
 
 ## Raw Genome Sequencing Data
 
