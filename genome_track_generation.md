@@ -46,4 +46,72 @@ cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${lin
 cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS24_BoaCon_interproscan_full.tsv | grep -v "MobiDBLite" | awk -F "\t" '{ print $4":"$5 }' | sort -k1,1 | paste -s -d "|" -`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ print $1, $2, $3, replace, $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.IntroPro.bed12
 ```
 
+Script to format the assembly hub
+```python
+import trackhub
+import re
+import sys
+import os
+import glob
+
+# In contrast to the example in the README, we do not use the
+# `trackhub.default_hub` function but instead build up the hub from its
+# component pieces.
+hub = trackhub.Hub(
+    "assembly_hub",
+    short_label="boaCon1 hub",
+    long_label="Assembly hub for Boa constrictor",
+    email="daren.card@gmail.com")
+
+# The major difference from a regular track hub is this object, which needs
+# to be added to the genomes_file object:
+genome = trackhub.Assembly(
+    genome="boaCon1",
+    twobit_file="boaCon1.2bit",
+    organism="boa constrictor",
+    defaultPos="scaffold-3:0-1000000",
+    scientificName="Boa constrictor",
+    description="Boa constrictor V1",
+    html_string="Boa constrictor V1 INFO\n",
+    orderKey=4800
+)
+
+genomes_file = trackhub.GenomesFile()
+hub.add_genomes_file(genomes_file)
+
+# we also need to create a trackDb and add it to the genome
+trackdb = trackhub.TrackDb()
+genome.add_trackdb(trackdb)
+
+# add the genome to the genomes file here:
+genomes_file.add_genome(genome)
+
+# Find all bigBeds
+for bb in glob.glob("boaCon1*.bigBed"):
+    os.path.basename(bb).split(".")
+    name, _ = os.path.basename(bb).split(".")
+    track = trackhub.Track(
+        name=trackhub.helpers.sanitize(name),
+        source=bb,
+        tracktype='bigBed')
+    trackdb.add_tracks(track)
+
+# Assembly hubs also need to have a Group specified. Here's how to do that:
+main_group = trackhub.groups.GroupDefinition(
+    "boaCon1_tracks",
+    label="boaCon1 Tracks",
+    priority=1,
+    default_is_closed=False)
+
+groups_file = trackhub.groups.GroupsFile([main_group])
+genome.add_groups(groups_file)
+
+# We can now add the "group" parameter to all the children of the trackDb
+for track in trackdb.children:
+    track.add_params(group="boaCon1_tracks")
+
+# render/stage the hub for upload
+trackhub.upload.stage_hub(hub, staging="boaCon1-staging")
+```
+
 These represent some tailored commands for this genome, but otherwise the steps outlined in [my blog post](http://darencard.net/blog/2019-01-25-UCSC-genome-track-setup/) were followed.
