@@ -36,4 +36,4 @@ Repeat and gene annotation files for the snake 7C-SGA team genome assembly (GFF 
 
 We have also created a [Genome Hub](https://genome.ucsc.edu/goldenpath/help/hgTrackHubHelp.html) that can be accessed through the [UCSC Genome Browser](https://genome.ucsc.edu/cgi-bin/hgHubConnect), followed by clicking on the “My Hubs” tab and then copying the URL [https://de.cyverse.org/anon-files/iplant/home/darencard/boaCon1_hub/assembly_hub.hub.txt](https://de.cyverse.org/anon-files/iplant/home/darencard/boaCon1_hub/assembly_hub.hub.txt) and clicking “Add Hub”. 
 
-This resource contains repeat tracks and gene annotation tracks ("genesraw"). There are additional gene annotation tracks for each species or database used to identify genes by homology, which provide more context about the putative identity of gene models.
+This resource contains repeat tracks and gene annotation tracks (`boaCon1_genes_raw`). There are additional gene annotation tracks for each species or database used to identify genes by homology, which provide more context about the putative identity of gene models.
