@@ -46,7 +46,7 @@ cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${lin
 Commands to create bed12 files for the gene annotation track with homology features to InterPro and SwissProt, which can be converted to bigBed as above.
 
 ```
-cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS23_BoaCon_SwissProt_blastp_1e-5.fmt6.txt | awk '{ print $2 }' | paste -s -d ";" -`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ if (replace != "") print $1, $2, $3, $4"|"replace, $5, $6, $7, $8, $9, $10, $11, $12; else print $1, $2, $3, $4"|No_homology_match", $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.sorted.SwissProt.bed12
+cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS23_BoaCon_SwissProt_blastp_1e-5.fmt6.txt | awk '{ print $2 }' | paste -s -d ";" -`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ if (replace != "") print $1, $2, $3, $4"|"replace, $5, $6, $7, $8, $9, $10, $11, $12; else print $1, $2, $3, $4"|No_homology_match", $5, $6, $7, $8, $9, $10, $11, $12 }'; done | sort -k1,1 -k2,2n > boaCon.maker_genes_only.sorted.SwissProt.bed12
 cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; grep -w "${query}" FileS24_BoaCon_interproscan_full.tsv | grep -v "MobiDBLite" | while read hit; do replace=`echo ${hit} | awk '{ print $4":"$5 }'`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ print $1, $2, $3, $4"|"replace, $5, $6, $7, $8, $9, $10, $11, $12 }'; done; done | uniq | sort | uniq > boaCon.maker_genes_only.IntroPro.bed12
 ```
 
