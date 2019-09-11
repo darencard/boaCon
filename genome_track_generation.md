@@ -19,8 +19,9 @@ Commands to prepare repeat annotation bigBed file.
 
 ```
 # RMout_to_bed.pl script from https://github.com/4ureliek/Parsing-RepeatMasker-Outputs/blob/master/RMout_to_bed.pl
+# RepeatMasker scores above 1000 are set to 1000 due to downstream errors - should not make a big difference
 ./RMout_to_bed.pl boaCon.repeats.out base0
-cat boaCon.repeats.out | awk -v OFS="\t" -F '[\t|;]' '{ print $1, $2, $3, $14, "500", $NF }' | sort -k1,1 -k2,2n > boaCon.repeats.reformat.bed
+cat boaCon.repeats.out.bed | awk -v OFS="\t" -F '[\t|;]' '{ print $1, $2, $3, $14, $4, $NF }' | awk -v OFS="\t" '{ if ($5 > 1000) print $1, 2, $3, $4, "1000", $6; else print $0 }' | sort -k1,1 -k2,2n > boaCon.repeats.reformat.bed
 bedToBigBed boaCon.repeats.reformat.bed boaCon.assembly.chrom.sizes boaCon.repeats.reformat.bigBed
 ```
 
