@@ -37,17 +37,17 @@ bedToBigBed boaCon.maker_genes_only.sorted.bed12 boaCon.assembly.chrom.sizes boa
 Commands to create bed12 files for the gene annotation track with homology features inferred from 4 other vertebrate species, which can be converted to bigBed as above.
 
 ```
-cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS25_Boa_Python_GCF_000186305.1_homology_annotation.fmt6.txt | awk '{ print $4 }'`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ print $1, $2, $3, replace, $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.sorted.Python.bed12
-cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS26_Boa_Thamnophis_GCF_001077635.1_homology_annotation.fmt6.txt | awk '{ print $4 }'`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ print $1, $2, $3, replace, $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.sorted.Thamnophis.bed12
-cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS27_Boa_Anolis_GCF_000090745.1_homology_annotation.fmt6.txt | awk '{ print $4 }'`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ print $1, $2, $3, replace, $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.sorted.Anolis.bed12
-cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS28_Boa_Human_GCF_000001405.37_homology_annotation.fmt6.txt | awk '{ print $4 }'`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ print $1, $2, $3, replace, $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.sorted.Human.bed12
+cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS25_Boa_Python_GCF_000186305.1_homology_annotation.fmt6.txt | awk '{ print $4 }'`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ if (replace != "") print $1, $2, $3, $4"|"replace, $5, $6, $7, $8, $9, $10, $11, $12; else print $1, $2, $3, $4"|No_homology_match", $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.sorted.Python.bed12
+cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS26_Boa_Thamnophis_GCF_001077635.1_homology_annotation.fmt6.txt | awk '{ print $4 }'`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ if (replace != "") print $1, $2, $3, $4"|"replace, $5, $6, $7, $8, $9, $10, $11, $12; else print $1, $2, $3, $4"|No_homology_match", $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.sorted.Thamnophis.bed12
+cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS27_Boa_Anolis_GCF_000090745.1_homology_annotation.fmt6.txt | awk '{ print $4 }'`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ if (replace != "") print $1, $2, $3, $4"|"replace, $5, $6, $7, $8, $9, $10, $11, $12; else print $1, $2, $3, $4"|No_homology_match", $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.sorted.Anolis.bed12
+cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS28_Boa_Human_GCF_000001405.37_homology_annotation.fmt6.txt | awk '{ print $4 }'`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ if (replace != "") print $1, $2, $3, $4"|"replace, $5, $6, $7, $8, $9, $10, $11, $12; else print $1, $2, $3, $4"|No_homology_match", $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.sorted.Human.bed12
 ```
 
 Commands to create bed12 files for the gene annotation track with homology features to InterPro and SwissProt, which can be converted to bigBed as above.
 
 ```
-cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS23_BoaCon_SwissProt_blastp_1e-5.fmt6.txt | awk '{ print $2 }' | paste -s -d ";" -`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ print $1, $2, $3, replace, $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.sorted.SwissProt.bed12
-cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS24_BoaCon_interproscan_full.tsv | grep -v "MobiDBLite" | awk -F "\t" '{ print $4":"$5 }' | sort -k1,1 | paste -s -d "|" -`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ print $1, $2, $3, replace, $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.IntroPro.bed12
+cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; replace=`grep -w "${query}" FileS23_BoaCon_SwissProt_blastp_1e-5.fmt6.txt | awk '{ print $2 }' | paste -s -d ";" -`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ if (replace != "") print $1, $2, $3, $4"|"replace, $5, $6, $7, $8, $9, $10, $11, $12; else print $1, $2, $3, $4"|No_homology_match", $5, $6, $7, $8, $9, $10, $11, $12 }'; done > boaCon.maker_genes_only.sorted.SwissProt.bed12
+cat boaCon.maker_genes_only.sorted.bed12 | while read line; do query=`echo ${line} | awk '{ print $4 }'`; grep -w "${query}" FileS24_BoaCon_interproscan_full.tsv | grep -v "MobiDBLite" | while read hit; do replace=`echo ${hit} | awk '{ print $4":"$5 }'`; echo ${line} | awk -v OFS="\t" -v replace="${replace}" '{ print $1, $2, $3, $4"|"replace, $5, $6, $7, $8, $9, $10, $11, $12 }'; done; done | uniq | sort | uniq > boaCon.maker_genes_only.IntroPro.bed12
 ```
 
 Script to format the assembly hub
@@ -91,6 +91,7 @@ genome.add_trackdb(trackdb)
 genomes_file.add_genome(genome)
 
 # Find all bigBeds
+# must only be a single "."
 for bb in glob.glob("boaCon1*.bigBed"):
     os.path.basename(bb).split(".")
     name, _ = os.path.basename(bb).split(".")
