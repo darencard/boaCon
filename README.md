@@ -10,7 +10,7 @@ Bradnam KR, Fass JN, Alexandrov A, Baranay P, Bechner M, Birol I, Boisvert S, Ch
 
 The raw transcriptomic data used for genome annotation and all genome annotations (i.e., repeats and genes) were published in the following paper. Please cite this publication when using these data.
 
-Card DC, Adams RH, Schield DR, Perry BW, Corbin AB, Pasquesi GIM, Row K, Daza JM, Booth W, Montgomery CE, Boback SM, Castoe TA. In Review. Genomic basis of convergent island phenotypes in boa constrictors.
+Card DC, Adams RH, Schield DR, Perry BW, Corbin AB, Pasquesi GIM, Row K, Daza JM, Booth W, Montgomery CE, Boback SM, Castoe TA. 2019. Genomic basis of convergent island phenotypes in boa constrictors. *Genome Biology & Evolution 11(11)*: 3123-3143. doi: [10.1093/gbe/evz226](https://doi.org/10.1093/gbe/evz226)
 
 ## Raw Genome Sequencing Data
 
@@ -18,7 +18,7 @@ The raw genome sequence read data for this genome can be obtained from the NCBI 
 
 ## Raw Transcriptome Sequencing Data
 
-The raw transcriptome sequence read data used for genome annotation can be obtained from the NCBI Sequence Read Archive under accession [SRP148755](https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP148755). Please cite Card *et al*. (In Review) when using these data.
+The raw transcriptome sequence read data used for genome annotation can be obtained from the NCBI Sequence Read Archive under accession [SRP148755](https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP148755). Please cite Card *et al*. (2019) when using these data.
 
 Blood RNA-seq data used for annotation purposes was also obtained from a previously published dataset by [Vicoso *et al*. (2013)](https://doi.org/10.1371/journal.pbio.1001643). If using these data or all RNA-seq data, please be sure to cite this paper as well.
 
